@@ -1,0 +1,3 @@
+[submodule "diffusion"]
+    path = third-party/denoising-diffusion-pytorch
+    url = git://github.com/lucidrains/denoising-diffusion-pytorch.git

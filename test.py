@@ -12,23 +12,23 @@ diffusion = GaussianDiffusion(
     image_size = 128,
     timesteps = 1000,           # number of steps
     sampling_timesteps = 250,   # number of sampling timesteps (using ddim for faster inference [see citation for ddim paper])
-    loss_type = 'l1',
-    objective = 'pred_x0',
-    beta_schedule = 'linear'
+    loss_type = 'l1'
 ).cuda()
 
 trainer = Trainer(
     diffusion,
     '/Pictures/GANfitti/generated_512_v3',
     train_batch_size = 8,
-    train_lr = 8e-5,
+    train_lr = 9e-5,
     train_num_steps = 700000,         # total training steps
     gradient_accumulate_every = 8,    # gradient accumulation steps
     ema_decay = 0.995,                # exponential moving average decay
-    amp = True,                        # turn on mixed precision
-    save_and_sample_every = 500,
-    results_folder='./results-5',
-    augment_horizontal_flip = False
+    amp = True,                       # turn on mixed precision
+    save_and_sample_every = 5000,
+    num_samples = 9,
+    results_folder='./results-1-s256-b8-g8-fp16',
+    augment_horizontal_flip = False,
+    fp16 = True
 )
 
 #trainer.load(8)
